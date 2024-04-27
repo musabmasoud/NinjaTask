@@ -1,0 +1,39 @@
+﻿@* @model UserSegmentManagement.Models.UserSegment
+
+<h1>Push User Information to Snapchat</h1>
+
+<form asp-action="Push">
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Age">Age:</label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender">Gender:</label>
+        <input asp-for="Gender" class="form-control" />
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Location">Location:</label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="segment">Select Segment:</label>
+        <select class="form-control" id="segment" name="segment">
+            <option value="segment1">Segment 1</option>
+            <option value="segment2">Segment 2</option>
+            <option value="segment3">Segment 3</option>
+            <!-- Add more options for additional segments -->
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Push to Snapchat</button>
+</form>
+
+<a asp-action="Index">Back to List</a>
+ *@
