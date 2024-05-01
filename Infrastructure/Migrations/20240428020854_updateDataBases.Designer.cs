@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(NinjaDbContext))]
-    [Migration("20240427110755_updateDataBases")]
+    [Migration("20240428020854_updateDataBases")]
     partial class updateDataBases
     {
         /// <inheritdoc />
@@ -43,31 +43,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Segments");
                 });
 
-            modelBuilder.Entity("Domain.Models.UserSegment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SegmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("UsersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SegmentId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("UserSegments");
-                });
-
-            modelBuilder.Entity("Domain.Models.Users", b =>
+            modelBuilder.Entity("Domain.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -107,15 +83,38 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Models.UserSegment", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SegmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SegmentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserSegments");
+                });
+
+            modelBuilder.Entity("Domain.Models.UserSegment", b =>
+                {
                     b.HasOne("Domain.Models.Segment", "Segment")
                         .WithMany()
                         .HasForeignKey("SegmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Users", "Users")
+                    b.HasOne("Domain.Models.User", "Users")
                         .WithMany()
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Segment");
 

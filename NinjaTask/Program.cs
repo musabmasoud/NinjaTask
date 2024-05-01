@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Application.Interfaces;
 using Infrastructure.Services;
 using Infrastructure.Mappings;
+using Application.Interfaces.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ option.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISegmentService, SegmentService>();
+builder.Services.AddScoped<ISnapchatService, SnapchatService>();
+
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 

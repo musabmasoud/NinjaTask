@@ -48,8 +48,7 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SegmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UsersId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    SegmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,10 +60,11 @@ namespace Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserSegments_Users_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_UserSegments_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -73,9 +73,9 @@ namespace Infrastructure.Migrations
                 column: "SegmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserSegments_UsersId",
+                name: "IX_UserSegments_UserId",
                 table: "UserSegments",
-                column: "UsersId");
+                column: "UserId");
         }
 
         /// <inheritdoc />

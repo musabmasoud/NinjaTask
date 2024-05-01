@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace Application.Interfaces.Users
 {
-    public interface IUserService
+    public interface ISnapchatService
     {
-        Task<User> Create(User users);
-        Task<List<User>> GetAllUsers();
+        Task<UserSegment> PushUser(UserSegment userSegment);
     }
 }

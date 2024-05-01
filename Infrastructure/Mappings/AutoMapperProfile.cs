@@ -13,8 +13,9 @@ namespace Infrastructure.Mappings
     {
         public AutoMapperProfile()
         {
-            CreateMap<Users,UserDto>().ReverseMap();
+            CreateMap<User,UserDto>().ReverseMap();
             CreateMap<Segment,SegmentDto>().ReverseMap();
+            CreateMap<UserSegment, UserSegmentDto>().ReverseMap();
         }
     }
 }

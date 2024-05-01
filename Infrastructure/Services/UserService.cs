@@ -18,14 +18,14 @@ namespace Infrastructure.Services
         {
             this.dbContext = dbContext;
         }
-        public async Task<Users> Create(Users users)
+        public async Task<User> Create(User users)
         {
            await dbContext.AddAsync(users);
             await dbContext.SaveChangesAsync();
             return users;
         }
 
-        public async Task<List<Users>> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
             return await dbContext.Users.ToListAsync();
         }
