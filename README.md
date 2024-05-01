@@ -1,4 +1,9 @@
-The program was designed in ASP.NET API, the database is in SQLServer, and the user interface is linked to ASP.NET MVC.
+The program was designed in ASP.NET API, uesing(DTOs,Automapper,MicroSrvice,Clean Architecture)
+\
+ database is in SQLServer,
+ \
+ user interface is linked to ASP.NET MVC.
+\
 API Endpoint 
 ![API endpoint](https://github.com/musabmasoud/NinjaTask/assets/96000124/240321b7-0802-4eac-a497-9185d4faa75e)
 Add user
